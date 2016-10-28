@@ -16,13 +16,22 @@
 
 <p>Now it’s your turn. Enter a number sequence in the boxes below, and we’ll tell you whether it satisfies the rule or not. You can test as many sequences as you want.</p>
 
+<% if @list != nil %>
 <ul>
+<% @list.each do |guess| %>
   <li>
-    <%= @first_num %>,<%= @second_num %>,<%= @third_num %>, <%= @result %>
+    <%= guess.first_num %>, <%= guess.second_num %>, <%= guess.third_num %> <%=
+      if(guess.first_num<guess.second_num and guess.second_num<guess.third_num)
+        "Yes!"
+      else
+        "No."
+      end %>
   </li>
+<% end %>
 </ul>
+<% end %>
 
-<form action="">
+<form action="http://localhost:3000/all_guesses">
   <p>
     Enter a sequence:
   </p>
